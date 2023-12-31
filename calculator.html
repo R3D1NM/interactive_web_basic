@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTERACTIVE</title>
+    <style>
+        body{
+            background-color: rgb(229, 170, 170);
+
+        }
+        input{
+            padding: 20px;
+            font-size: 20px;
+        }
+        .value{
+            color: rgb(255, 204, 0);
+            font-size: 80px;
+            padding: 10px;
+        }
+        button{
+            background-color: black;
+            color: white;
+            padding: 10px 40px;
+            font-size: 30px;
+            border-radius: 50px;
+        }
+        button:hover{
+            background-color: white;
+            color: black;
+            transition: all 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" value="1" />
+    <input type="number" value="2" />
+    <h1 class="value">0</h1>
+    <button>ADD</button>
+    <script>
+
+        const button = document.querySelector('button')
+        const h1 = document.querySelector('h1')
+
+        button.addEventListener('click', () => {
+            const input = document.querySelectorAll('input')
+            let ans = 0
+            input.forEach(item => {
+                ans += Number(item.value)
+            });
+            console.log(ans);
+            h1.innerText = ans
+        })
+    </script>
+</body>
+</html>
