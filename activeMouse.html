@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Mouse</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        h1{
+            font-size: 30px;
+            padding: 20px;
+        }
+        .box {
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* to set the center */
+            transform: translate(-50%,-50%); 
+        }
+    </style>
+    <script>
+        //execute script after loading
+        window.onload = () => {
+            const h1 = document.querySelector('h1')
+            const box = document.querySelector('.box')
+            window.addEventListener("mousemove", (e)=>{
+                h1.innerText = `x: ${e.pageX} y: ${e.pageY}`
+                box.style.top = e.pageY +"px"
+                box.style.left = e.pageX +"px"
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <div class="box"> </div>
+</body>
+</html>
