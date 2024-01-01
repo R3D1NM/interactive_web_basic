@@ -33,23 +33,33 @@
     </style>
 </head>
 <body>
-    <input type="number" value="1" />
-    <input type="number" value="2" />
+    <input type="number" value="0" />
+    <input type="number" value="0" />
     <h1 class="value">0</h1>
     <button>ADD</button>
     <script>
 
+
+
         const button = document.querySelector('button')
         const h1 = document.querySelector('h1')
+        const input = document.querySelectorAll('input')
+
+        //function to add two input
+        const addition = () => {
+            h1.innerText = Number(input[0].value)+Number(input[1].value)
+        }
+
+        //set random input value
+        input.forEach(item => {
+            item.value = Math.floor(Math.random()*100)
+        })
+
+        addition()
+        
 
         button.addEventListener('click', () => {
-            const input = document.querySelectorAll('input')
-            let ans = 0
-            input.forEach(item => {
-                ans += Number(item.value)
-            });
-            console.log(ans);
-            h1.innerText = ans
+            addition()
         })
     </script>
 </body>
