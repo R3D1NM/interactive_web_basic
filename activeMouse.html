@@ -7,20 +7,25 @@
     <style>
         body{
             background-color: blanchedalmond;
+            height: 300vh;
         }
         h1{
             font-size: 30px;
             padding: 20px;
         }
         .box {
-            width: 40px;
-            height: 40px;
-            background-color: black;
+            width: 60px;
+            height: 60px;
+            /* background-color: black; */
             position: absolute;
             top: 50%;
             left: 50%;
             /* to set the center */
             transform: translate(-50%,-50%); 
+        }
+        .box img {
+            transform: translate(-50%,-50%); 
+            width: 200px;
         }
     </style>
     <script>
@@ -28,17 +33,44 @@
         window.onload = () => {
             const h1 = document.querySelector('h1')
             const box = document.querySelector('.box')
+
+            let x = 0;
+            let y = 0;
+            let targetX = 0;
+            let targetY = 0;
+            let speed = 0.03; //latency
+
             window.addEventListener("mousemove", (e)=>{
+                // console.log(e.pageY, e.clientY, e.screenY);
+                x = e.pageX
+                y = e.pageY
+
                 h1.innerText = `x: ${e.pageX} y: ${e.pageY}`
-                box.style.top = e.pageY +"px"
-                box.style.left = e.pageX +"px"
+
 
             })
+
+            //loop to observe mouse movement
+            const loop = () =>{
+                //follow mouse movement more gently
+                targetX += (x-targetX)*speed
+                targetY += (y-targetY)*speed
+
+                //set
+                box.style.top = targetY +"px"
+                box.style.left = targetX +"px"
+
+                window.requestAnimationFrame(loop)
+            }
+            loop()
+
         }
     </script>
 </head>
 <body>
     <h1></h1>
-    <div class="box"> </div>
+    <div class="box"> 
+        <img src="butterfly.gif" alt="butterfly">
+    </div>
 </body>
 </html>
