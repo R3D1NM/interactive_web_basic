@@ -22,6 +22,7 @@
             left: 50%;
             /* to set the center */
             transform: translate(-50%,-50%); 
+            transition: all 0.5s ease-out
         }
         .box img {
             transform: translate(-50%,-50%); 
@@ -42,27 +43,28 @@
 
             window.addEventListener("mousemove", (e)=>{
                 // console.log(e.pageY, e.clientY, e.screenY);
-                x = e.pageX
-                y = e.pageY
+                // x = e.pageX
+                // y = e.pageY
 
                 h1.innerText = `x: ${e.pageX} y: ${e.pageY}`
-
+                box.style.top = e.pageY + "px"
+                box.style.left = e.pageX + "px"
 
             })
 
             //loop to observe mouse movement
-            const loop = () =>{
-                //follow mouse movement more gently
-                targetX += (x-targetX)*speed
-                targetY += (y-targetY)*speed
+            // const loop = () =>{
+            //     //follow mouse movement more gently
+            //     targetX += (x-targetX)*speed
+            //     targetY += (y-targetY)*speed
 
-                //set
-                box.style.top = targetY +"px"
-                box.style.left = targetX +"px"
+            //     //set
+            //     box.style.top = targetY +"px"
+            //     box.style.left = targetX +"px"
 
-                window.requestAnimationFrame(loop)
-            }
-            loop()
+            //     window.requestAnimationFrame(loop)
+            // }
+            // loop()
 
         }
     </script>
