@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOUSEOVER</title>
+    <style>
+        body{
+            background: bisque;
+            overflow: hidden;
+        }
+        .gateBox{
+            /* background-color: aqua; */
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 20px;
+            text-align: center;
+            width: 400px;
+        }
+        .gateBox .top {
+            background-color: #2f92d8;
+            color: #fffaf0;
+            padding: 20px;
+            border: 2px solid white;
+        }
+        .gateBox .bottom {
+            /* background-color: #fffaf0; */
+            border: 2px solid white;
+            border-top: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .bottom a {
+            color: #2f92d8;
+            padding: 20px 0;
+            width: 50%;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease-out;
+        }
+        a:hover{
+            background-color: #fffaf0;
+        }
+        .bottom .line{
+            border: 1px solid white;
+        }
+        .cursorItem {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 1000; /* alyways above the buttons */
+            pointer-events: none;
+        }
+        .circle {
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            background-color: aquamarine;
+            border-radius: 50%;
+            margin: -60px -60px;
+            opacity: 0.5;
+            transition: all 0.2s ease-out;
+        }
+    </style>
+    <script>
+        window.onload = () =>{
+            let x =0, y=0
+            let targetX=0, targetY=0
+            const speed = 0.09
+
+            const cursorItem = document.querySelector('.cursorItem')
+            const circle = cursorItem.querySelector('.circle')
+
+            const buttonAll = document.querySelectorAll('a')
+            buttonAll.forEach((item)=>{
+                item.addEventListener("mouseenter",()=>{
+                    circle.style.transform = "scale(.3)"
+                })
+                item.addEventListener("mouseleave",()=>{
+                    circle.style.transform = "scale(1)"
+                })
+            })
+
+            window.addEventListener("mousemove", (e)=>{
+                x=e.pageX
+                y=e.pageY
+            })
+
+            const loop = () =>{
+                targetX += (x-targetX)*speed
+                targetY += (y-targetY)*speed
+
+                cursorItem.style.transform = `translate(${targetX}px, ${targetY}px)`
+                window.requestAnimationFrame(loop);
+            }
+
+            loop();
+        }
+    </script>
+</head>
+<body>
+    <div class="cursorItem">
+        <span class="circle"></span>
+    </div>
+    <div class="gateBox">
+        <div class="top">
+            Any Question?
+        </div>
+        <div class="bottom">
+            <a href="#yes">YES</a>
+            <span class="line"></span>
+            <a href="#no">NO</a>
+        </div>
+    </div>
+</body>
+</html>
