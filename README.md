@@ -13,3 +13,8 @@
 - a circle follows mouse movement gently
 - circle shrinks if the cursor enters to the buttons
 - circle grow back if the cursor leaves the buttons
+
+4. sirup.html
+- clone sirup
+- few images move along mouse
+- transform translateX()
