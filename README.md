@@ -18,3 +18,8 @@
 - clone sirup
 - few images move along mouse
 - transform translateX()
+
+5. scroll.html
+- linear gradient background
+- progress bar on scroll movement
+- progress bar color changes along with the scroll
